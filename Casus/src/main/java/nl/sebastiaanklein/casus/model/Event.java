@@ -25,6 +25,8 @@ public class Event {
 	@Column
 	private EventType eventType;
 	@Column
+	private boolean isPrivate;
+	@Column
 	private double xCoordinate;
 	@Column
 	private double yCoordinate;
@@ -36,12 +38,13 @@ public class Event {
 		
 	}
 	
-	public Event(String name, String description, LocalDate date, EventType eventType, double xCoordinate, double yCoordinate) {
+	public Event(String name, String description, LocalDate date, EventType eventType, boolean isPrivate, double xCoordinate, double yCoordinate) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.date = date;
 		this.eventType = eventType;
+		this.isPrivate = isPrivate;
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
 	}
@@ -86,6 +89,14 @@ public class Event {
 		this.eventType = eventType;
 	}
 
+	public boolean isPrivate() {
+		return isPrivate;
+	}
+
+	public void setPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
+	}
+
 	public double getxCoordinate() {
 		return xCoordinate;
 	}
@@ -108,24 +119,5 @@ public class Event {
 
 	public void setUserEventList(List<UserEvent> userEventList) {
 		this.userEventList = userEventList;
-	}
-	
-//	public boolean addUser(User user) {
-//		UserEvent userEvent = new UserEvent(user.getIdentifier(), identifier);
-//		for(UserEvent userEvents: userEventList) {
-//			if(userEvents.equals(userEvent)) {
-//				return false;
-//			}
-//		}
-//		UserEventService UserEventService = new UserEventService();
-//		UserEventService.create(userEvent);
-//		if(userEventList.add(userEvent)) {
-//			return true;
-//		}
-//		return false;
-//	}
-
-	
-
-	
+	}	
 }
