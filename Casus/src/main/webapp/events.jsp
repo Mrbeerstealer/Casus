@@ -40,8 +40,10 @@
 			<input type="text" name=description />
 			<p>Date:</p>
 			<input type="text" name=date />
-			<p>event type:</p>
+			<p>Event type:</p>
 			<input type="text" name=eventType />
+			<p>Is this event private?:</p>
+			<input type="text" name=isPrivate />
 			<p>Location(x,y):</p>
 			<input type="text" name=xCoordinate /><input type="text" name=yCoordinate /><br />
 			<button type="submit">

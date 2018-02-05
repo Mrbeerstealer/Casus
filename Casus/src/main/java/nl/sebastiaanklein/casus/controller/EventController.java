@@ -60,10 +60,11 @@ public class EventController {
 		LocalDate date = LocalDate.parse(strDate, formatter);
 		
 		EventType eventType = EventType.valueOf(request.getParameter("eventType"));
+		boolean isPrivate = Boolean.getBoolean(request.getParameter("isPrivate"));
 		double xCoordinate = Double.parseDouble(request.getParameter("xCoordinate"));
 		double yCoordinate = Double.parseDouble(request.getParameter("yCoordinate"));
 		
-		Event event = new Event(name, description, date, eventType, xCoordinate, yCoordinate);
+		Event event = new Event(name, description, date, eventType, isPrivate, xCoordinate, yCoordinate);
 		
 		this.iEventService.create(event);
 		return "redirect:/event/s/find";
