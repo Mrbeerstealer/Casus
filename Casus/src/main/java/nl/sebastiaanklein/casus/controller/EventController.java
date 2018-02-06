@@ -60,7 +60,7 @@ public class EventController {
 		LocalDate date = LocalDate.parse(strDate, formatter);
 		
 		EventType eventType = EventType.valueOf(request.getParameter("eventType"));
-		boolean isPrivate = Boolean.parseBoolean(request.getParameter("isPrivate"));
+		boolean isPrivate = Boolean.getBoolean(request.getParameter("isPrivate"));
 		double xCoordinate = Double.parseDouble(request.getParameter("xCoordinate"));
 		double yCoordinate = Double.parseDouble(request.getParameter("yCoordinate"));
 		
