@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import nl.sebastiaanklein.casus.model.DoesAttend;
 import nl.sebastiaanklein.casus.model.Event;
 import nl.sebastiaanklein.casus.model.EventType;
 import nl.sebastiaanklein.casus.service.IEventService;
@@ -40,6 +41,7 @@ public class EventController {
 		Event event = this.iEventService.findOne(id);
 		model.addAttribute("event", event);
 		model.addAttribute("userEvents", event.getUserEventList());
+		model.addAttribute("doesAttends", DoesAttend.values());
 		return "event";
 
 	}

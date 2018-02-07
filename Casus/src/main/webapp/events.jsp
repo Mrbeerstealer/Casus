@@ -47,7 +47,7 @@
 				</c:forEach>
 			</select>
 			<p>Is this event private?:</p>
-			<input type="radio" name=isPrivate value="false" checked = "true"/> No
+			<input type="radio" name=isPrivate value="false" checked/> No
 			<input type="radio" name=isPrivate value="true"/> Yes
 			<p>Location(x,y):</p>
 			<input type="text" name=xCoordinate /><input type="text" name=yCoordinate /><br />

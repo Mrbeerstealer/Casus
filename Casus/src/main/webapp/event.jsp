@@ -38,6 +38,19 @@
 				<tr style="background-color: white; color: black">
 					<td width="80px"><c:out value="${userEvent.user.name}"/> </td>
 					<td width="80px"><c:out value="${userEvent.user.lastName}"/> </td>
+					<td width="80px">
+						<select name = "doesAttend">
+							<c:forEach items="${doesAttends}" var="doesAttendee">
+								<c:choose>
+									<c:when test="${userEvent.doesAttend == doesAttendee}">
+										<option selected = "selected">${doesAttendee}</option>
+									</c:when> <c:otherwise>
+										<option>${doesAttendee}</option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</select>
+					</td>
 					<td width="80px"><c:out value="${userEvent.doesAttend}"/> </td>
 				</tr>
 			</c:forEach>
