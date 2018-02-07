@@ -30,6 +30,7 @@ public class EventController {
 	@RequestMapping("/event/s/find")
 	public String findEvents(Model model) {		
 		model.addAttribute("events", this.iEventService.findAll());
+		model.addAttribute("eventTypes", EventType.values());
 		return "events";
 
 	}

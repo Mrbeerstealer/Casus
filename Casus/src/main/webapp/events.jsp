@@ -41,9 +41,14 @@
 			<p>Date:</p>
 			<input type="text" name=date />
 			<p>Event type:</p>
-			<input type="text" name=eventType />
+			<select name = "eventType">
+				<c:forEach items="${eventTypes}" var="eventType">
+					<option>${eventType}</option>
+				</c:forEach>
+			</select>
 			<p>Is this event private?:</p>
-			<input type="text" name=isPrivate />
+			<input type="radio" name=isPrivate value="false" checked = "true"/> No
+			<input type="radio" name=isPrivate value="true"/> Yes
 			<p>Location(x,y):</p>
 			<input type="text" name=xCoordinate /><input type="text" name=yCoordinate /><br />
 			<button type="submit">
