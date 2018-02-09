@@ -4,7 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class UserEvent {
@@ -15,17 +18,18 @@ public class UserEvent {
 	private DoesAttend doesAttend;
 	
 	@ManyToOne
+    @JoinColumn(name = "user_id")
+	@JsonIgnore
 	private User user;
+	
 	@ManyToOne
+    @JoinColumn(name = "event_identifier")
 	private	Event event;
-
+	
 	public UserEvent() {
 		doesAttend = DoesAttend.UNDECIDED;
 	}
-	
-	public String toString() {
-		return "" + user.getId() + event.getIdentifier();
-	}
+
 
 	public DoesAttend getDoesAttend() {
 		return doesAttend;
@@ -50,5 +54,14 @@ public class UserEvent {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
+
+
+	@Override
+	public String toString() {
+		return "UserEvent [id=" + id + ", doesAttend=" + doesAttend + "]";
+	}
+	
+	
+	
 	
 }

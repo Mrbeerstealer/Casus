@@ -18,8 +18,10 @@ public class UserService implements IUserService{
 	public List<User> findAll() {
 		return this.iUserDAO.findAll();
 	}
+	
 	@Override
 	public User findOne(Long id) {
+		System.out.println(this.iUserDAO.findOne(id).toString());
 		return this.iUserDAO.findOne(id);
 	}
 

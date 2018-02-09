@@ -21,21 +21,21 @@ public class UserController {
 	@Autowired
 	private IEventService iEventService;
 	
-	@RequestMapping("/user/s/find")
-	public String findUsers(Model model) {	
-		model.addAttribute("users", this.iUserService.findAll());
-		return "users";
-
-	}
-	
-	@RequestMapping("/user/{id}/find")
-	public String findUser(Model model, @PathVariable Long id) {		
-		User user =this.iUserService.findOne(id);
-		model.addAttribute("user", user);
-		model.addAttribute("userEvents", user.getUserEventList());
-		return "user";
-
-	}
+//	@RequestMapping("/user/s/find")
+//	public String findUsers(Model model) {	
+//		model.addAttribute("users", this.iUserService.findAll());
+//		return "users";
+//
+//	}
+//	
+//	@RequestMapping("/user/{id}/find")
+//	public String findUser(Model model, @PathVariable Long id) {		
+//		User user =this.iUserService.findOne(id);
+//		model.addAttribute("user", user);
+//		model.addAttribute("userEvents", user.getUserEventList());
+//		return "user";
+//
+//	}
 	
 	@RequestMapping("/user/{id}/add/event")
 	public String findEventsForUser(Model model, @PathVariable Long id) {

@@ -1,6 +1,10 @@
 package nl.sebastiaanklein.casus.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +14,7 @@ import nl.sebastiaanklein.casus.service.IEventService;
 import nl.sebastiaanklein.casus.service.IUserService;
 
 @RestController
+@CrossOrigin(origins="http://localhost:4200")
 public class UserRestController {
 	
 	@Autowired
@@ -22,25 +27,18 @@ public class UserRestController {
 		return iUserService.findOne(userId);		
 	}
 	
-	
-	
-	/*
 	@RequestMapping("/user/s/find")
-	public String findUsers(Model model) {	
-		model.addAttribute("users", this.iUserService.findAll());
-		return "users";
+	public List<User> findUsers() {	
+		return this.iUserService.findAll();
 
 	}
 	
 	@RequestMapping("/user/{id}/find")
-	public String findUser(Model model, @PathVariable Long id) {		
-		User user =this.iUserService.findOne(id);
-		model.addAttribute("user", user);
-		model.addAttribute("userEvents", user.getUserEventList());
-		return "user";
-
+	public User findUser(@PathVariable Long id) {		
+		return this.iUserService.findOne(id);
 	}
 	
+/*
 	@RequestMapping("/user/{id}/add/event")
 	public String findEventsForUser(Model model, @PathVariable Long id) {
 		model.addAttribute("userId", id);

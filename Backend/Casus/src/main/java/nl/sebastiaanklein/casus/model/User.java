@@ -29,8 +29,7 @@ public class User {
 	@Column
 	private double yCoordinate;
 	
-	@OneToMany
-	@JsonIgnore
+	@OneToMany(mappedBy = "user")
 	private List<UserEvent> userEventList;
 	
 	public User() {
@@ -103,20 +102,13 @@ public class User {
 		this.userEventList = userEventList;
 	}
 
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", lastName=" + lastName + ", isAdmin=" + isAdmin
+				+ ", xCoordinate=" + xCoordinate + ", yCoordinate=" + yCoordinate + ", userEventList=" + userEventList
+				+ "]";
+	}
 	
-//	public boolean addToList(Event event) {
-//		UserEvent userEvent = new UserEvent(id, event.getIdentifier());
-//		for(UserEvent userEvents: userEventList) {
-//			if(userEvents.equals(userEvent)) {
-//				return false;
-//			}
-//		}
-//		UserEventService UserEventService = new UserEventService();
-//		UserEventService.create(userEvent);
-//		if(userEventList.add(userEvent)) {
-//			return true;
-//		}
-//		return false;
-//	}
+	
 	
 }

@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Event {
@@ -31,7 +33,8 @@ public class Event {
 	@Column
 	private double yCoordinate;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "event")
+	@JsonIgnore
 	private List<UserEvent> userEventList;
 
 	public Event() {
