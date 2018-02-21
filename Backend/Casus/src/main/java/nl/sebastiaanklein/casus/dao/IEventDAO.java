@@ -8,4 +8,5 @@ import nl.sebastiaanklein.casus.model.Event;
 
 public interface IEventDAO extends CrudRepository<Event, Long>{
 	List<Event> findAll();
+	Event findOne(Long id);
 }

@@ -22,19 +22,19 @@
             <td width="80px">does attend</td>
         </tr>
     </thead>
-    <tr *ngFor="let event of user.userEventList" style="background-color: white; color: black">
-        <td width="80px">{{event.event.name}}</td>
-        <td width="80px">{{event.event.description}}</td>
-        <td width="80px">{{event.doesAttend}} </td>
+    <tr *ngFor="let userEvent of user.userEventList" style="background-color: white; color: black">
+        <td width="80px">{{userEvent.event.name}}</td>
+        <td width="80px">{{userEvent.event.description}}</td>
+        <td width="80px">{{userEvent.doesAttend}} </td>
     </tr>
 
 </table>
 
-<!-- <form method="post" action="/user/{{user.id}}/add/event">
+<form method="post" action="/user/{{user.id}}/add/event">
     <button type="submit">Add events</button>
 </form>
 <form method="post" action="/user/s/find">
     <button type="submit">
         Users
     </button>
-</form> -->
+</form> 

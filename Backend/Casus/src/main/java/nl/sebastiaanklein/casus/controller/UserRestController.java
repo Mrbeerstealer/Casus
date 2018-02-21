@@ -5,10 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.sebastiaanklein.casus.dto.EventDto;
+import nl.sebastiaanklein.casus.dto.UserDto;
+import nl.sebastiaanklein.casus.model.Event;
+import nl.sebastiaanklein.casus.model.EventType;
 import nl.sebastiaanklein.casus.model.User;
 import nl.sebastiaanklein.casus.service.IEventService;
 import nl.sebastiaanklein.casus.service.IUserService;
@@ -34,8 +40,51 @@ public class UserRestController {
 	}
 	
 	@RequestMapping("/user/{id}/find")
-	public User findUser(@PathVariable Long id) {		
-		return this.iUserService.findOne(id);
+	public UserDto findUser(@PathVariable Long id) {
+		
+		User user = iUserService.findOne(id);
+		return UserDto.buildFromUser(user);
+	}
+	
+	@RequestMapping("/event/{id}/find")
+	public EventDto findEvent(@PathVariable Long id) {
+		System.out.println("iets");
+		Event event = iEventService.findOne(id);
+		return EventDto.buildFromEvent(event);
+	}
+	
+	@RequestMapping("/event/s/find")
+	public List<Event> findEvents() {
+		return this.iEventService.findAll();
+	}
+	
+	@RequestMapping("/eventTypes/all")
+	public EventType[] findEventTypes() {
+		return EventType.values();
+	}
+	
+	@PostMapping("/user/new")
+	public boolean createUser(@RequestBody UserDto userDto){
+			
+		User user = new User(userDto.getName(), userDto.getLastName(), userDto.getxCoordinate(), userDto.getyCoordinate());
+		
+		this.iUserService.create(user);
+		return true;
+	}
+	
+	@PostMapping("/event/new")
+	public boolean createEvent(@RequestBody EventDto eventDto){
+			
+		Event event = new Event(eventDto.getName(), 
+								eventDto.getDescription(), 
+								eventDto.getDate(),
+								eventDto.getEventType(),
+								eventDto.isPrivateStatus(), 
+								eventDto.getxCoordinate(), 
+								eventDto.getyCoordinate());
+		
+		this.iEventService.create(event);
+		return true;
 	}
 	
 /*

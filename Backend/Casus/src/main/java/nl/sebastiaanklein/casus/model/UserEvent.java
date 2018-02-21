@@ -7,8 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class UserEvent {
 	@Id
@@ -19,7 +17,6 @@ public class UserEvent {
 	
 	@ManyToOne
     @JoinColumn(name = "user_id")
-	@JsonIgnore
 	private User user;
 	
 	@ManyToOne

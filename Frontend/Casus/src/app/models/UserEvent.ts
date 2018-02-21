@@ -1,6 +1,8 @@
-import { Event } from "./Event";
+import { Ev } from "./Ev";
+import { User } from "./User";
 
 export class UserEvent {
-    event: Event;
+    ev: Ev;
+    user: User;
     doesAttend: string;
 }

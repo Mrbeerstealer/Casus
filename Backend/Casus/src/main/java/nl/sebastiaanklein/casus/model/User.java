@@ -30,6 +30,7 @@ public class User {
 	private double yCoordinate;
 	
 	@OneToMany(mappedBy = "user")
+	@JsonIgnore
 	private List<UserEvent> userEventList;
 	
 	public User() {

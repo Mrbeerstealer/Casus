@@ -8,8 +8,13 @@ import { User } from '../../models/User';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  
   users : User[];
-  constructor(private httpService: HttpserviceService) { }
+  user: User;
+
+  constructor(private httpService: HttpserviceService) {
+    this.user = new User;
+  }
 
   ngOnInit() {
     this.findUsers()
@@ -25,26 +30,10 @@ export class UsersComponent implements OnInit {
       () => console.log('request done')
     );
   }
+
+  addUser(){
+    this.httpService.addUser(this.user).subscribe(
+      user => this.findUsers())
+      
+  }
 }
-
-// interface User {
-//   id:number;
-//   name:string;
-//   lastName:string;
-//   userEvent:UserEvent;
-//   xCoordinate:number;
-//   yCoordinate:number; 
-//   admin:boolean;
-// }
-
-// interface UserEvent {
-//   id:number;
-//   event:Event;
-//   doesAttend: string;
-// }
-
-// interface Event{
-//   id:number;
-//   name: string;
-//   description: string;
-// }

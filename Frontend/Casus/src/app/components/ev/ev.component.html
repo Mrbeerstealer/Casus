@@ -1,0 +1,56 @@
+<table>
+  <thead>
+    <tr style="background-color: black; color: white">
+      <td width="80px">name</td>
+      <td width="80px">description</td>
+      <td width="80px">date</td>
+      <td width="80px">event type</td>
+      <td width="80px">location</td>
+      <td width="80px"></td>
+    </tr>
+  </thead>
+  <tr style="background-color: white; color: black">
+    <td width="80px">{{ev.name}} </td>
+    <td width="80px">{{ev.description}} </td>
+    <td width="80px">{{ev.date}} </td>
+    <td width="80px">{{ev.eventType}} </td>
+    <td width="80px">{{ev.xCoordinate}} </td>
+    <td width="80px">{{ev.yCoordinate}} </td>
+  </tr>
+</table>
+<table>
+  <thead>
+    <tr style="background-color: black; color: white">
+      <td width="80px">name</td>
+      <td width="80px">lastName</td>
+      <td width="80px">does attend</td>
+    </tr>
+  </thead>
+
+  <tr *ngFor="let userEvent of event.userEventList" style="background-color: white; color: black">
+    <td width="80px">{{userEvent.user.name}} </td>
+    <td width="80px">{{userEvent.user.lastName}} </td>
+    <!-- <td width="80px">
+      <select name="doesAttend">
+        <c:forEach items="${doesAttends}" var="doesAttendee">
+          <c:choose>
+            <c:when test="${userEvent.doesAttend == doesAttendee}">
+              <option selected="selected">${doesAttendee}</option>
+            </c:when>
+            <c:otherwise>
+              <option>${doesAttendee}</option>
+            </c:otherwise>
+          </c:choose>
+        </c:forEach>
+      </select>
+    </td> -->
+    <td width="80px">{{userEvent.doesAttend}}</td>
+  </tr>
+</table>
+
+<form method="post" action="/event/{{event.identifier}}/add/user">
+  <button type="submit">Add users</button>
+</form>
+<form method="post" action="/event/s/find">
+  <button type="submit">Return to events</button>
+</form>

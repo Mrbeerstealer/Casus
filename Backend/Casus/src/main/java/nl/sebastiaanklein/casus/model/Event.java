@@ -27,7 +27,7 @@ public class Event {
 	@Column
 	private EventType eventType;
 	@Column
-	private boolean isPrivate;
+	private boolean privateStatus;
 	@Column
 	private double xCoordinate;
 	@Column
@@ -41,13 +41,13 @@ public class Event {
 		
 	}
 	
-	public Event(String name, String description, LocalDate date, EventType eventType, boolean isPrivate, double xCoordinate, double yCoordinate) {
+	public Event(String name, String description, LocalDate date, EventType eventType, boolean privateStatus, double xCoordinate, double yCoordinate) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.date = date;
 		this.eventType = eventType;
-		this.isPrivate = isPrivate;
+		this.privateStatus = privateStatus;
 		this.xCoordinate = xCoordinate;
 		this.yCoordinate = yCoordinate;
 	}
@@ -93,11 +93,11 @@ public class Event {
 	}
 
 	public boolean isPrivate() {
-		return isPrivate;
+		return privateStatus;
 	}
 
-	public void setPrivate(boolean isPrivate) {
-		this.isPrivate = isPrivate;
+	public void setPrivateStatus(boolean privateStatus) {
+		this.privateStatus = privateStatus;
 	}
 
 	public double getxCoordinate() {

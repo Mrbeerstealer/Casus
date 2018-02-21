@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpserviceService } from '../../services/httpservice.service';
 import { User } from '../../models/User';
 
-
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -17,7 +16,6 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.findUser(1);
-
   }
 
   findUser(userId) {
@@ -33,24 +31,3 @@ export class UserComponent implements OnInit {
   }
 
 }
-
-// interface User {
-//   id: number;
-//   name: string;
-//   lastName: string;
-//   userEventList: UserEvent[];
-//   xCoordinate: number;
-//   yCoordinate: number;
-//   admin: boolean;
-// }
-
-// interface UserEvent {
-//   event: Event;
-//   doesAttend: string;
-// }
-
-// interface Event {
-//   id: number;
-//   name: string;
-//   description: string;
-// }

@@ -9,11 +9,11 @@
     </tr>
   </thead>
 
-  <tr *ngFor="let user of users" style="background-color: white; color: black">
-    <td width="80px">{{user.name}} </td>
-    <td width="80px">{{user.lastName}}</td>
-    <td width="80px">{{user.xCoordinate}} </td>
-    <td width="80px">{{user.yCoordinate}} </td>
+  <tr *ngFor="let userie of users" style="background-color: white; color: black">
+    <td width="80px">{{userie.name}} </td>
+    <td width="80px">{{userie.lastName}}</td>
+    <td width="80px">{{userie.xCoordinate}} </td>
+    <td width="80px">{{userie.yCoordinate}} </td>
     <td width="80px">
       <form method="post" action="/user/{{user.id}}/find">
         <button type="submit">Go to</button>
@@ -23,21 +23,18 @@
 
 </table>
 
-<form method="post" action="/user/new">
-  <p>Name:</p>
-  <input type="text" name=name />
-  <p>Last Name:</p>
-  <input type="text" name=lastName />
-  <p>Location(x,y):</p>
-  <input type="text" name=xCoordinate />
-  <input type="text" name=yCoordinate />
-  <br />
-  <button type="submit">
-    Versturen
-  </button>
-</form>
-<form method="post" action="/event/s/find">
-  <button type="submit">
-    Events
-  </button>
-</form>
+
+<p>Name:</p>
+<input [(ngModel)] = "user.name" />
+<p>Last Name:</p>
+<input [(ngModel)] = "user.lastName"/>
+<p>Location(x,y):</p>
+<input [(ngModel)] = "user.xCoordinate"/>
+<input [(ngModel)] = "user.yCoordinate"/>
+<br />
+<button type="submit" (click) = "addUser()">
+  Versturen
+</button>
+<button type="submit">
+  Events
+</button>

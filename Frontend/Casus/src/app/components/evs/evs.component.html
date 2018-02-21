@@ -1,0 +1,51 @@
+<table>
+  <thead>
+    <tr style="background-color: black; color: white">
+      <td width="80px">name</td>
+      <td width="80px">description</td>
+      <td width="80px">date</td>
+      <td width="80px">event type</td>
+      <td width="80px">location</td>
+      <td width="80px"></td>
+    </tr>
+  </thead>
+
+  <tr *ngFor="let eventie of events" style="background-color: white; color: black">
+    <td width="80px">{{eventie.name}} </td>
+    <td width="80px">{{eventie.description}} </td>
+    <td width="80px">{{eventie.date}} </td>
+    <td width="80px">{{eventie.eventType}} </td>
+    <td width="80px">{{eventie.xCoordinate}} </td>
+    <td width="80px">{{eventie.yCoordinate}} </td>
+    <td>
+      <form method="post" action="/event/{{event.identifier}}/find">
+        <button type="submit">Go to</button>
+      </form>
+    </td>
+  </tr>
+
+</table>
+
+<p>Name:</p>
+<input [(ngModel)] = "ev.name" />
+<p>Description:</p>
+<input [(ngModel)] = "ev.description" />
+<p>Date:</p>
+<input [(ngModel)] = "ev.date" />
+<p>Event type:</p>
+<select name="eventType">
+  <option *ngFor="let eventType of eventTypes">{{eventType}}</option>
+</select>
+<p>Is this event private?:</p>
+<!-- <input type="radio" name=isPrivate value="false" checked/> No
+<input type="radio" name=isPrivate value="true" /> Yes -->
+<p>Location(x,y):</p>
+<input [(ngModel)] = "ev.xCoordinate" />
+<input [(ngModel)] = "ev.yCoordinate" />
+<br />
+<button type="submit">
+  Versturen
+</button>
+<button type="submit">
+  Users
+</button>

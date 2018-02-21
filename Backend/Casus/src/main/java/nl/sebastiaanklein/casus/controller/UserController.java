@@ -45,18 +45,18 @@ public class UserController {
 
 	}
 	
-	@PostMapping("/user/new")
-	public String createUser(HttpServletRequest request){
-		
-		String name = request.getParameter("name");
-		String lastName = request.getParameter("lastName");
-		double xCoordinate = Double.parseDouble(request.getParameter("xCoordinate"));
-		double yCoordinate = Double.parseDouble(request.getParameter("yCoordinate"));
-		
-		User user = new User(name, lastName, xCoordinate, yCoordinate);
-		
-		this.iUserService.create(user);
-		return "redirect:/user/s/find";
-	}
+//	@PostMapping("/user/new")
+//	public String createUser(HttpServletRequest request){
+//		
+//		String name = request.getParameter("name");
+//		String lastName = request.getParameter("lastName");
+//		double xCoordinate = Double.parseDouble(request.getParameter("xCoordinate"));
+//		double yCoordinate = Double.parseDouble(request.getParameter("yCoordinate"));
+//		
+//		User user = new User(name, lastName, xCoordinate, yCoordinate);
+//		
+//		this.iUserService.create(user);
+//		return "redirect:/user/s/find";
+//	}
 
 }

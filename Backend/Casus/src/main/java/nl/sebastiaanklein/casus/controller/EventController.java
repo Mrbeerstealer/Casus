@@ -28,23 +28,23 @@ public class EventController {
 	@Autowired
 	private IUserService iUserService;
 	
-	@RequestMapping("/event/s/find")
-	public String findEvents(Model model) {		
-		model.addAttribute("events", this.iEventService.findAll());
-		model.addAttribute("eventTypes", EventType.values());
-		return "events";
-
-	}
+//	@RequestMapping("/event/s/find")
+//	public String findEvents(Model model) {		
+//		model.addAttribute("events", this.iEventService.findAll());
+//		model.addAttribute("eventTypes", EventType.values());
+//		return "events";
+//
+//	}
 	
-	@RequestMapping("/event/{id}/find")
-	public String findEvent(Model model, @PathVariable Long id) {
-		Event event = this.iEventService.findOne(id);
-		model.addAttribute("event", event);
-		model.addAttribute("userEvents", event.getUserEventList());
-		model.addAttribute("doesAttends", DoesAttend.values());
-		return "event";
-
-	}
+//	@RequestMapping("/event/{id}/find")
+//	public String findEvent(Model model, @PathVariable Long id) {
+//		Event event = this.iEventService.findOne(id);
+//		model.addAttribute("event", event);
+//		model.addAttribute("userEvents", event.getUserEventList());
+//		model.addAttribute("doesAttends", DoesAttend.values());
+//		return "event";
+//
+//	}
 	
 	@RequestMapping("/event/{id}/add/user")
 	public String findUsersForEvent(Model model, @PathVariable Long id) {
@@ -54,25 +54,25 @@ public class EventController {
 
 	}
 	
-	@PostMapping("/event/new")
-	public String createEvent(HttpServletRequest request){
-		
-		String name = request.getParameter("name");
-		String description = request.getParameter("description");
-		
-		String strDate = request.getParameter("date");
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate date = LocalDate.parse(strDate, formatter);
-		
-		EventType eventType = EventType.valueOf(request.getParameter("eventType"));
-		boolean isPrivate = Boolean.parseBoolean(request.getParameter("isPrivate"));
-		double xCoordinate = Double.parseDouble(request.getParameter("xCoordinate"));
-		double yCoordinate = Double.parseDouble(request.getParameter("yCoordinate"));
-		
-		Event event = new Event(name, description, date, eventType, isPrivate, xCoordinate, yCoordinate);
-		
-		this.iEventService.create(event);
-		return "redirect:/event/s/find";
-	}
+//	@PostMapping("/event/new")
+//	public String createEvent(HttpServletRequest request){
+//		
+//		String name = request.getParameter("name");
+//		String description = request.getParameter("description");
+//		
+//		String strDate = request.getParameter("date");
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//		LocalDate date = LocalDate.parse(strDate, formatter);
+//		
+//		EventType eventType = EventType.valueOf(request.getParameter("eventType"));
+//		boolean isPrivate = Boolean.parseBoolean(request.getParameter("isPrivate"));
+//		double xCoordinate = Double.parseDouble(request.getParameter("xCoordinate"));
+//		double yCoordinate = Double.parseDouble(request.getParameter("yCoordinate"));
+//		
+//		Event event = new Event(name, description, date, eventType, isPrivate, xCoordinate, yCoordinate);
+//		
+//		this.iEventService.create(event);
+//		return "redirect:/event/s/find";
+//	}
 
 }

@@ -21,7 +21,6 @@ public class UserService implements IUserService{
 	
 	@Override
 	public User findOne(Long id) {
-		System.out.println(this.iUserDAO.findOne(id).toString());
 		return this.iUserDAO.findOne(id);
 	}
 
